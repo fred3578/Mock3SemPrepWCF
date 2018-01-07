@@ -15,24 +15,40 @@ namespace Mock3SemPrepWCF
     {
 
         [OperationContract]
-        [WebInvoke(Method = "GET", RequestFormat = WebMessageFormat.Json, UriTemplate = "Catch/")]
+        [WebInvoke(Method = "GET", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, UriTemplate = "Catch/")]
         List<Catch> GetCatches();
 
         [OperationContract]
-        [WebInvoke(Method = "GET", RequestFormat = WebMessageFormat.Json, UriTemplate = "Catch/{id}")]
+        [WebInvoke(Method = "GET", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, UriTemplate = "Catch/{id}")]
         Catch GetOneCatch(string id);
 
         [OperationContract]
-        [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, UriTemplate = "Catch/")]
+        [WebInvoke(Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, UriTemplate = "Catch/")]
         Catch AddCatch(Catch newCatch);
 
         [OperationContract]
-        [WebInvoke(Method = "PUT", RequestFormat = WebMessageFormat.Json, UriTemplate = "Catch/{id}")]
+        [WebInvoke(Method = "PUT", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, UriTemplate = "Catch/{id}")]
         Catch UpdateCatch(string id, Catch udcatch);
 
         [OperationContract]
-        [WebInvoke(Method = "DELETE", RequestFormat = WebMessageFormat.Json, UriTemplate = "Catch/{id}")]
-        Catch DeleteCatch(string id);
+        [WebInvoke(Method = "DELETE", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, UriTemplate = "Catch/{id}")]
+        void DeleteCatch(string id);
 
+    }
+    [DataContract]
+    public class Catch
+    {
+        [DataMember]
+        public int Id { get; set; }
+        [DataMember]
+        public string Navn { get; set; }
+        [DataMember]
+        public string Art { get; set; }
+        [DataMember]
+        public double Vaegt { get; set; }
+        [DataMember]
+        public string Sted { get; set; }
+        [DataMember]
+        public int Uge { get; set; }
     }
 }

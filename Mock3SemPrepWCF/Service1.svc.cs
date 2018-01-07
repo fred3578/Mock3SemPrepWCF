@@ -12,11 +12,17 @@ namespace Mock3SemPrepWCF
     // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
     public class Service1 : IService1
     {
-        public static List<Catch> catchList = new List<Catch>()
+        //public static List<Catch> catchList = new List<Catch>()
+        //{
+        //    new Catch(1, "EbbeVand", "Gedde", 3.75, "Aresø", 2),
+        //    new Catch(2, "PeterStor", "Ørred", 1.55, "Emsø", 7),
+        //    new Catch(3, "AndyBor", "Skalle", 0.35, "Vejlesø", 25)
+        //};
+
+        public static List<Catch> CatchList = new List<Catch>
         {
-            new Catch(1, "EbbeVand", "Gedde", 3.75, "Aresø", 2),
-            new Catch(2, "PeterStor", "Ørred", 1.55, "Emsø", 7),
-            new Catch(3, "AndyBor", "Skalle", 0.35, "Vejlesø", 25)
+            new Catch {Art = "TestArt", Id = 1, Navn = "TestNavn", Sted = "TestSted", Uge = 1, Vaegt = 1.1},
+            new Catch {Art = "TestArt2", Id = 2, Navn = "TestNavn2", Sted = "TestSted2", Uge = 2, Vaegt = 2.2}
         };
 
         /// Opgave 1
@@ -28,25 +34,25 @@ namespace Mock3SemPrepWCF
             //{   
             //    @catch.ToString();
             //}
-            return catchList;
+            return CatchList;
         }
 
         public Catch GetOneCatch(string id)
         {
             int idInt = int.Parse(id);
-            return catchList.Find(Catch => Catch.Id == idInt);
+            return CatchList.Find(Catch => Catch.Id == idInt);
         }
 
         public Catch AddCatch(Catch newCatch)
         {
-            catchList.Add(newCatch);
+            CatchList.Add(newCatch);
             return newCatch;
         }
 
         public Catch UpdateCatch(string id, Catch udcatch)
         {
             int idint = int.Parse(id);
-            Catch existingCatch = catchList.FirstOrDefault(eC => eC.Id == idint);
+            Catch existingCatch = CatchList.FirstOrDefault(eC => eC.Id == idint);
             if (existingCatch == null)
             {
                 return null;
@@ -74,18 +80,28 @@ namespace Mock3SemPrepWCF
             return existingCatch;
         }
 
-        public Catch DeleteCatch(string id)
-        {
-            int idint = int.Parse(id);
-            Catch delCatch = catchList.Find(ca => ca.Id == idint);
-            if (delCatch == null)
-            {
-                return null;
-            }
-            catchList.Remove(delCatch);
-            return delCatch;
-        }
+        //public void UpdateCatch(Catch myCatch)
+        //{
+        //    CatchList.RemoveAll(x => x.Id == myCatch.Id);
+        //    CatchList.Add(myCatch);
+        //}
 
+        //public Catch DeleteCatch(string id)
+        //{
+        //    int idint = int.Parse(id);
+        //    Catch delCatch = CatchList.Find(ca => ca.Id == idint);
+        //    if (delCatch == null)
+        //    {
+        //        return null;
+        //    }
+        //    CatchList.Remove(delCatch);
+        //    return delCatch;
+        //}
+
+        public void DeleteCatch(string id)
+        {
+            CatchList.RemoveAll(x => x.Id == Int32.Parse(id));
+        }
 
     }
 }
