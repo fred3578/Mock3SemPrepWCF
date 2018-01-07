@@ -23,9 +23,10 @@ class Program
         AddCatch(Testfisk, "Catch/", RestService);
 
         Thread.Sleep(10000);
+        CatchList = GetCatchList("Catch/", RestService).Result;
 
-        //Show All Catch
-        Console.WriteLine("** Alle fisk **");
+            //Show All Catch
+            Console.WriteLine("** Alle fisk **");
         ShowAllFish(CatchList);
 
         //show 1 fish
@@ -46,9 +47,13 @@ class Program
         Console.WriteLine("** removing fish **");
         Thread.Sleep(10000);
         RemoveOneFish(3, "Catch/", RestService);
-        ShowAllFish(CatchList);
 
+            Thread.Sleep(10000);
 
+        CatchList = GetCatchList("Catch/", RestService).Result;
+            ShowAllFish(CatchList);
+
+        Console.ReadLine();
     }
 
     private static async Task<IList<Catch>> GetCatchList(string GetString, string RestUrl)
