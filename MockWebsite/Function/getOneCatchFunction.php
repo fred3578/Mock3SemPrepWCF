@@ -6,7 +6,7 @@
  * Time: 23.18
  */
 
-function dosomething()
+function getOneCatchFunction()
 {
     $getcatchuri = "http://mock3semprepwcfrest.azurewebsites.net/service1.svc/catch/";
     $catchcontent = file_get_contents($getcatchuri);
@@ -16,3 +16,6 @@ function dosomething()
 }
 
 ?>
+
+</body>
+</html>

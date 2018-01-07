@@ -14,7 +14,7 @@
                 </div>
                 <ul class="nav navbar-nav">
                     <li><a href="index.php">Forsiden</a></li>
-                    <li><a href="dosomething.php">Do Something Function</a></li>
+                    <li><a href="getOneCatch.php">Do Something Function</a></li>
                 </ul>
             </div>
         </nav>
