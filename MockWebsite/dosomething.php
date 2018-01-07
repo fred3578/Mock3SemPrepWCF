@@ -22,7 +22,7 @@
 <?php
 require ('Function/doSomethingFunction.php');
 if(isset($_POST['submit'])){
-    doSomethingFunction("http://mockrestservice.azurewebsites.net/service1.svc/something/");
+    doSomethingFunction("http://mock3semprepwcfrest.azurewebsites.net/service1.svc/catch/");
 }
 ?>
 </body>
